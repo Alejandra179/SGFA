@@ -5,8 +5,16 @@ const FormLogin = () => {
   const [user,setUser] = useState({nameUser:"",
                                     password:""})
 
-  const validarUser = (e)=>{
-    e.preventDefault()
+  const alert=(value)=>{
+    return(`<div class="alert alert-warning alert-dismissible fade ${value}" role="alert">
+    Usuario o contraseña incorrecta
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>`)
+  }
+
+  const validarUser = e=>{
+    e.preventDefault();
+   
     console.log(user)
     //realizar peticion fetch
     return true
@@ -16,7 +24,11 @@ const FormLogin = () => {
 
   return (
     <div className='card'>
-      <div className='card-header'>Login</div>
+      <div className='card-header'>Login
+        <div className='container'>
+          { (user.nameUser=="" || user.password=="")? alert("show"): alert("hidden")}
+        </div>
+      </div>
       <div className='card-body'>
       <form onSubmit={validarUser}>
         <div className="mb-3">
@@ -30,10 +42,7 @@ const FormLogin = () => {
           <input type="password" className="form-control" id="password" value={user.password}
           onChange={(e)=>setUser({...user,password:e.target.value})} />
         </div>
-        <div className="mb-3 form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-          <label className="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+        
         <button type="submit" className="btn btn-primary">Enviar</button>
       </form>
       </div>
