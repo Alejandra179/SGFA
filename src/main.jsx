@@ -1,15 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App'
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+import Home from '././pages/Home'
+import Login from '././pages/Login'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import Main from './pages/Main'
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
   <BrowserRouter>
-  <Routes>
-    <Route path="/" element={ <App />}/>
-  </Routes>
-
-   
+    <Routes>
+      <Route path="/" element={ <App />}/>
+      <Route path="home" element={<Home/>}/>
+      <Route path="login" element={<Login/>}/>
+      <Route path="/main" element={<Main/>}/>
+      <Route
+      path="*"
+      element={
+        <main style={{ padding: "1rem" }}>
+          <p>There's nothing here!</p>
+        </main>
+      }
+    />
+    </Routes>   
   </BrowserRouter>
 )
