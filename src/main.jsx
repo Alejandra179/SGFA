@@ -6,6 +6,7 @@ import Home from '././pages/Home'
 import Login from '././pages/Login'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import Main from './pages/Main'
+import FormDinamico from './components/FormDinamico'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <BrowserRouter>
@@ -13,7 +14,8 @@ root.render(
       <Route path="/" element={ <App />}/>
       <Route path="home" element={<Home/>}/>
       <Route path="login" element={<Login/>}/>
-      <Route path="/main" element={<Main/>}/>
+      <Route path="main" element={<Main/>}/>
+      <Route path="din" element={<FormDinamico/>}/>
       <Route
       path="*"
       element={

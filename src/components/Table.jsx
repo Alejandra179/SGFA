@@ -5,13 +5,14 @@ export default function Table() {
         <div className='container'>
             <div className='d-flex justify-content-center'>
                     <div className='row col-7'>
+                        
                         <table class="table table-secondary table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">N°</th>
                                     <th scope="col">Nombre del comedor</th>
                                     <th scope="col">Dirección</th>
-                                    <th scope="col">Persona a cargo</th>
+                                    <th scope="col">Responsable</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>

@@ -5,6 +5,7 @@ export default function Main() {
   return (
     <div>
         <Navbar/>
+        
         <TableRegistros/>
     </div>
   )

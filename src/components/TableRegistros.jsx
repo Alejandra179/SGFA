@@ -1,10 +1,16 @@
 import React,{useState} from 'react'
 
 export default function TableRegistros() {
-    const [fecha,setFecha] = useState(new Date())
+   
   return (
     <div>
          <div className='container'>
+          <div className='ml-4 pl-2 d-flex justify-content-start'>
+          <button className='btn btn-success'>
+                <i className="bi bi-file-earmark-plus-fill"></i>
+            </button>
+
+          </div>
             <div className='d-flex justify-content-center'>
                     <div className='row col-8'>
                     <table class="table table-secondary table-hover">
