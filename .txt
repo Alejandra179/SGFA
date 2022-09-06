@@ -1,1 +1,13 @@
-mongodb+srv://alemz:39320477ale@cluster0.slgs9tk.mongodb.net/?retryWrites=true&w=majority
+REQUIMIENTOS:
+-Diseñar un sistema de gestion para la Fundacion Afectos
+-Debe tener una pagina de logeo, con dos perfiles: Admin y normal
+-Debe tener una página para visualizar en forma de tabla los siguientes datos
+de los comedores: N°, Nombre, Dirección, Responsable, boton de editar y eliminar.
+-Debe poseer una pagina para visualizar y cargar los registros de mercaderias semanales.
+-Se debe considerar que cada semana el administrador realiza la carga de las cantidad y productos de cada dia, que pocas veces cambia
+-la pagina de registros debe posee una tabla con: N°, Nombre, Detalles de mercaderias, fecha de carga, fecha y hora de entrega, estado.
+En la columna detalles de deberá mostrar un icono que me permita mostrar de manera detallada las mercaderias por dia, en la columna estado se
+debera mostrar tres iconos que indicará el estado de la entrega(falta,entregado, con observaciones)
+-
+-Debe poseer dos modelos: Usuario y registro
+-
