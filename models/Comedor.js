@@ -5,10 +5,9 @@ const ComedorSchema = new Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
+    address: {
+        street: String,
+        numbero: 
     },
     password: {
         type: String,
