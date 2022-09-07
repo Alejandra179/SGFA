@@ -1,4 +1,4 @@
-import FormLogin from '../components/FormLogin';
+import FormLogin from './FormLogin';
 import Navbar from './Navbar';
 import Table from './Table';
 import Modal from './Modal';
