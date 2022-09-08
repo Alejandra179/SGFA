@@ -1,30 +1,26 @@
 const express = require('express')
 const router = express.Router()
-const auth = require('../../middlewares/auth')
+const auth = require('../middleware/auth')
 const { check, validationResult} = require('express-validator')
 const config = require('config')
 const jwt = require('jsonwebtoken')
 const  bcrypt = require('bcryptjs')
+const User = require('./../models/User');
 
-const User = require('../../models/User');
-//@route GET api/auth
-//desc: test route
-//@publica
-router.get('/', auth , async (req, res) => {
+router.get('/', async (req, res) => {
+    
     try {
-        const user = await User.findById(req.user.id).select('-password')
-        res.json(user)
+        const user = await User.findById(req.user.id)
+        return res.json(user)
     } catch (error) {
         console.error(err.message)
-        res.status(500).send('server error')
+        return res.json(error.message)
+    
     }
+    
 })
 
-//-------------------------------------------------//
 
-//@route POST api/auth
-//@desc: Authenticate user & get token
-//@access: public
 router.post('/', 
 [
 check('password', '-password requerido-').exists()
@@ -43,13 +39,13 @@ async (req, res) => {
     try {
         let user = await User.findOne({userName})
         if(!user){
-            return res.status(400).json({errors : [{msg: 'user not found'}] })  
+            return res.json("usuario no encontrado")  
         }
         
         const isMatch = await bcrypt.compare(password, user.password)
 
         if(!isMatch){ 
-            return res.status(400).json({errors : [{msg: 'las credenciales no son correctas'}] }) 
+            return res.status(400).json('las credenciales no son correctas') 
         }
 
         //return jsonwebtoken
@@ -65,19 +61,17 @@ async (req, res) => {
             config.get('jwtSecret'),
             {expiresIn: 3600},
             (err, token) => {
-                if(err) throw err
-                res.json({token})
+                if(err) res.json(err.message)
+                return res.json({token})
             })
        
-        /* console.log('user created')
-        res.json({msg:'datos correctos user creado', datos : req.body.name + req.body.email}) */
 
     } catch (error) {
         console.error(error.message)
-        return res.status(500).send('server error')
+        return res.status(500).json(error.message)
     }
 
-    /*  res.json({msg:`user route + ${req.body.name}`}) */
+
    
 })
 

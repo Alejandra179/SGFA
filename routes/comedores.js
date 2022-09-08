@@ -52,21 +52,7 @@ router.get("/comedores/:id_comedor", async (req, res) => {
   }
 });
 
-router.delete("/deleteComedor/:id_comedor", async (req, res) => {
-  try {
-    await Comedor.findByIdAndDelete(req.params.id_comedor);
-    //   await Comedor.findByIdAndDelete({_id: req.user.id})
 
-    return res.json({ msg: "User Deleted" });
-  } catch (error) {
-    console.log(error);
-    return res.json(error.message);
-  }
-});
-
-//@route PUT api/profile/experience
-//desc: add profile experience
-//@private
 router.put("/updateComedores/:id_comedor", async (req, res) => {
   const errors = validationResult(req);
 
@@ -96,7 +82,7 @@ router.put("/updateComedores/:id_comedor", async (req, res) => {
 });
 
 
-router.delete("/comedores/:id_comedor", async (req, res) => {
+router.delete("/delete-comedor/:id_comedor", async (req, res) => {
   try {
     await Comedor.findByIdAndDelete(req.params.id_comedor);
     return res.json("comedor eliminado correctamente");

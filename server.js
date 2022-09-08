@@ -1,20 +1,22 @@
 //// "NOSEPORQUENOANDA "¯\_(ツ)_/¯" LOL   
 const express = require('express')
 const cors = require('cors')
-
+const connectDB = require('./config/db')
 const app = express()
 const PORT = process.env.PORT || 5000
 
 app.use(cors())
 
-const usersRoutes = require('./routes/api/users')
-const authRoutes = require('./routes/api/auth')
-const profileRoutes = require('./routes/api/profile')
-const postsRoutes = require('./routes/api/posts')
+const usersRoutes = require('./routes/users')
+const authRoutes = require('./routes/auth')
+const listasRoutes = require('./routes/listas')
+const comedoresRoutes = require('./routes/comedores')
 
-const auth = require('./middlewares/auth')
 
-const connectDB = require('./config/db')
+
+//const auth = require('./middleware/auth')
+
+//const connectDB = require('./config/db')
 
 //iniciamos el mware
 app.use(express.json({extended : false}))
@@ -27,9 +29,11 @@ app.get('/test', (req, res) => res.send('BEnd api rest activo') )
 //routes
 
 app.use('/api/users', usersRoutes)
-app.use('/api/posts', postsRoutes)
 app.use('/api/auth',  authRoutes)
-app.use('/api/profile', profileRoutes)
+app.use('/api/listas',  listasRoutes)
+app.use('/api/comedores',  comedoresRoutes)
+
+
 
 app.listen(PORT , () => {
    console.log(`servidor iniciado en el puerto: ${PORT}`)

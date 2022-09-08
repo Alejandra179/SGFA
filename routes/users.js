@@ -4,12 +4,9 @@ const  bcrypt = require('bcryptjs')
 const { check, validationResult} = require('express-validator')
 const config = require('config')
 const jwt = require('jsonwebtoken')
-const User = require('../../models/User')
+const User = require('../models/User')
 
-//@route POST api/users
-//@desc: registration route
-//@access: public
-//]
+
 
 router.post('/', 
 [
@@ -77,7 +74,7 @@ async (req, res) => {
 
     } catch (error) {
         console.error(error.message)
-        res.status(500).send('server error')
+        return res.json(error.message)
     }
 
     /*  res.json({msg:`user route + ${req.body.name}`}) */
