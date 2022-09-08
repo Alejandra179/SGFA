@@ -7,16 +7,21 @@ const ComedorSchema = new Schema({
     },
     address: {
         street: String,
-        numbero: 
+        number: Number,
+        neighborhood: String
+
     },
-    password: {
+    responsable: {
         type: String,
         required: true
     },
     date: {
         type: Date,
         default: Date.now
-    }
+    } 
+
+},{
+    timestamps:true
 })
 
 module.exports = model('user', ComedorSchema)
