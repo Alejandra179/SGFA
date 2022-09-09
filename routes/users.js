@@ -33,9 +33,6 @@ async (req, res) => {
         if (user){ res.status(400).json({errors : [{msg: 'el usuario ya existe'}] })  }
         
         //get user gravatar
-
-        
-
        
 
         //new instance of user mongodb document model

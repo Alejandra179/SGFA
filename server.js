@@ -29,9 +29,9 @@ app.get('/test', (req, res) => res.send('BEnd api rest activo') )
 //routes
 
 app.use('/api/users', usersRoutes)
+app.use('/api/comedores',  comedoresRoutes)
 app.use('/api/auth',  authRoutes)
 app.use('/api/listas',  listasRoutes)
-app.use('/api/comedores',  comedoresRoutes)
 
 
 

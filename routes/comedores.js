@@ -13,7 +13,7 @@ router.get("/getComedores", async (req, res) => {
   }
 });
 
-router.post("/addComedores", async (req, res) => {
+router.post("/addComedor", async (req, res) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -38,7 +38,7 @@ router.post("/addComedores", async (req, res) => {
 //desc: get all profiles
 //@public
 
-router.get("/comedores/:id_comedor", async (req, res) => {
+router.get("/getComedor/:id_comedor", async (req, res) => {
   try {
     const comedor = await Comedor.findById(req.params.id_comedor);
 
@@ -53,7 +53,7 @@ router.get("/comedores/:id_comedor", async (req, res) => {
 });
 
 
-router.put("/updateComedores/:id_comedor", async (req, res) => {
+router.put("/updateComedor/:id_comedor", async (req, res) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -82,7 +82,7 @@ router.put("/updateComedores/:id_comedor", async (req, res) => {
 });
 
 
-router.delete("/delete-comedor/:id_comedor", async (req, res) => {
+router.delete("/deleteComedor/:id_comedor", async (req, res) => {
   try {
     await Comedor.findByIdAndDelete(req.params.id_comedor);
     return res.json("comedor eliminado correctamente");
