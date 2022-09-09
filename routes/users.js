@@ -36,7 +36,7 @@ async (req, res) => {
 
         
 
-        console.log(avatar)
+       
 
         //new instance of user mongodb document model
         user = new User({

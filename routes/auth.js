@@ -7,13 +7,14 @@ const jwt = require('jsonwebtoken')
 const  bcrypt = require('bcryptjs')
 const User = require('./../models/User');
 
+
 router.get('/', async (req, res) => {
     
     try {
         const user = await User.findById(req.user.id)
         return res.json(user)
     } catch (error) {
-        console.error(err.message)
+        console.error(error.message)
         return res.json(error.message)
     
     }
