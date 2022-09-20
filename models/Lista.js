@@ -15,7 +15,10 @@ const ListaSchema = new Schema(
         ],
       },
     ],
-    estado: String,
+    estado: {
+      type: Array,
+      enum:["cargado","pendiente","entregado"]
+    },
   },
   {
     timestamps: true,
