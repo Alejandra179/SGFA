@@ -14,6 +14,7 @@ const ListaSchema = new Schema({
         }
 
     ],
+    estado: String
 
 },{
     timestamps:true

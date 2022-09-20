@@ -20,14 +20,13 @@ router.post("/addLista", async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { comedor, dia, mercaderias } = req.body;
+  const { comedor, semana } = await req.body;
+  console.log(semana)
 
   try {
     const newLista = { comedor: comedor,
-        semana:[{
-            dia: dia,
-            mercaderias: mercaderias
-        }] };
+        semana: semana
+      };
     const lista = new Lista(newLista);
     await lista.save();
     console.log("creada con exito");
@@ -38,11 +37,8 @@ router.post("/addLista", async (req, res) => {
   }
 });
 
-//@route GET api/profile/
-//desc: get all profiles
-//@public
 
-router.get("/lista/:id_lista", async (req, res) => {
+router.get("/getLista/:id_lista", async (req, res) => {
   try {
     const lista = await Lista.findById(req.params.id_lista);
 
@@ -56,7 +52,7 @@ router.get("/lista/:id_lista", async (req, res) => {
   }
 });
 
-router.delete("/delete-lista/:id_lista", async (req, res) => {
+router.delete("/deleteLista/:id_lista", async (req, res) => {
   try {
     await Lista.findByIdAndDelete(req.params.id_lista);
     //   await Comedor.findByIdAndDelete({_id: req.user.id})
@@ -78,11 +74,10 @@ router.put("/updateLista/:id_lista", async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { comedor, dia, mercaderias } = req.body;
+  const { comedor, semana } = req.body;
   const list = {
     comedor,
-    dia,
-    mercaderias
+   semana
   };
 
   try {
