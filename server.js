@@ -11,12 +11,11 @@ const usersRoutes = require('./routes/users')
 const authRoutes = require('./routes/auth')
 const listasRoutes = require('./routes/listas')
 const comedoresRoutes = require('./routes/comedores')
-
+const productosRoutes = require('./routes/productos')
 
 
 //const auth = require('./middleware/auth')
 
-//const connectDB = require('./config/db')
 
 //iniciamos el mware
 app.use(express.json({extended : false}))
@@ -32,6 +31,7 @@ app.use('/api/users', usersRoutes)
 app.use('/api/comedores',  comedoresRoutes)
 app.use('/api/auth',  authRoutes)
 app.use('/api/listas',  listasRoutes)
+app.use('/api/prodcutos',  productosRoutes)
 
 
 

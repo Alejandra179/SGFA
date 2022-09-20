@@ -1,23 +1,25 @@
-const {model, Schema} = require('mongoose');
+const { model, Schema } = require("mongoose");
 
-
-const ListaSchema = new Schema({
+const ListaSchema = new Schema(
+  {
     comedor: String,
-    semana:[
-        {
-            dia: String,
-            mercaderias:[{
-                cantidad: Number,
-                descripcion: String,
-                unidad_medida: String
-            }]
-        }
-
+    semana: [
+      {
+        dia: String,
+        mercaderias: [
+          {
+            cantidad: Number,
+            descripcion: String,
+            unidad_medida: String,
+          },
+        ],
+      },
     ],
-    estado: String
+    estado: String,
+  },
+  {
+    timestamps: true,
+  }
+);
 
-},{
-    timestamps:true
-})
-
-module.exports = model('lista',ListaSchema)
+module.exports = model("lista", ListaSchema);

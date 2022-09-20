@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 
-
 router.post('/', 
 [
 check('name', '-el nombre es requerido-').not().isEmpty(),
