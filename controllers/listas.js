@@ -50,8 +50,6 @@ ListaCtrl.addLista = async (req, res) => {
 ListaCtrl.deleteLista = async (req, res) => {
   try {
     await Lista.findByIdAndDelete(req.params.id_lista);
-    //   await Comedor.findByIdAndDelete({_id: req.user.id})
-
     return res.json({ msg: "User Deleted" });
   } catch (error) {
     console.log(error);

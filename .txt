@@ -1,3 +1,15 @@
+OBJETIVOS
+-----------------
+* Elaborar un dispositivo que capture datos de la humedad, temperatura, precipitación, dirección y velocidad del viento mediante la utilización de componentes asequibles.
+* Captura y almacenamiento de valores capturados por el dispositivo de hardware mediante la utilización de un servidor web.
+* Diseñar una API que permita realizar peticiones post, para agregar los valores recibidos por el dispositivo, y diferentes peticiones get, para consumir los registros históricos del clima, realizar consultas por rango de fechas y obtener los últimos valores obtenidos.
+* Realizar predicciones del clima.
+
+ALCANCE
+-----------------
+
+
+
 REQUIMIENTOS:
 -Diseñar un sistema de gestion para la Fundacion Afectos
 -Debe tener una pagina de logeo, con dos perfiles: Admin y normal
