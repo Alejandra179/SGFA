@@ -13,10 +13,10 @@ const ListaSchema = new Schema(
             unidad_medida: String,
           },
         ],
-      },
+      }
     ],
     estado: {
-      type: Array,
+      type: String,
       enum:["cargado","pendiente","entregado"]
     },
   },

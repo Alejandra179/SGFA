@@ -47,6 +47,7 @@ ListaCtrl.addLista = async (req, res) => {
   }
 };
 
+
 ListaCtrl.deleteLista = async (req, res) => {
   try {
     await Lista.findByIdAndDelete(req.params.id_lista);

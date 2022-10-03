@@ -1,5 +1,5 @@
 const ProductoCtrl = {};
-
+const Producto = require("../models/Producto")
 ProductoCtrl.getProductos = async (req, res) => {
   try {
     const productos = await Producto.find();
