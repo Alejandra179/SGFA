@@ -1,6 +1,6 @@
 const comedoresCtrl = {};
 const Comedor = require("../models/Comedor");
-const { check, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
 comedoresCtrl.getComedores = async (req, res) => {
   try {
     const comedores = await Comedor.find();
@@ -11,20 +11,15 @@ comedoresCtrl.getComedores = async (req, res) => {
   }
 };
 
-
 comedoresCtrl.getComedor = async (req, res) => {
-  const id = req.params.id_comedor
+  const id = req.params.id_comedor;
   try {
-    const comedor = await Comedor.findOne({_id:id})
-    console.log(comedor)
-    if (!comedor){
-
-      return res.status(400).json({ msg: "error - comedor no encontrado - " });
-    }
-    return res.json(comedor)
+    const comedor = (await Comedor.findOne({ _id: id })(!comedor))
+      ? res.status(400).json({ msg: "error - comedor no encontrado - " })
+      : res.json(comedor);
   } catch (error) {
     console.log(error.message);
-    return res.json({message:"no se encuentra el documento"});
+    return res.json({ message: "no se encuentra el documento" });
   }
 };
 
@@ -41,17 +36,15 @@ comedoresCtrl.addComedor = async (req, res) => {
     const newComedor = { name, street, neighborhood, number, responsable };
     const come = new Comedor(newComedor);
     await come.save();
-    console.log("creado con exito");
     return res.json(come);
   } catch (err) {
-    console.error(err.message);
     return res.json(err.message);
   }
 };
 
 comedoresCtrl.updateComedor = async (req, res) => {
   const errors = validationResult(req);
-  const id = req.params.id_comedor
+  const id = req.params.id_comedor;
   const { name, street, neighborhood, number, responsable } = req.body;
   const come = {
     name,
@@ -62,7 +55,7 @@ comedoresCtrl.updateComedor = async (req, res) => {
   };
 
   try {
-    const comedor = await Comedor.findByIdAndUpdate(id,come);
+    const comedor = await Comedor.findByIdAndUpdate(id, come);
     return res.json(comedor);
   } catch (err) {
     return res.status(400).json({ msg: "error - comedor no encontrado - " });
@@ -70,11 +63,11 @@ comedoresCtrl.updateComedor = async (req, res) => {
 };
 
 comedoresCtrl.deleteComedor = async (req, res) => {
+  const id = req.params.id_comedor;
   try {
-    await Comedor.findByIdAndDelete(req.params.id_comedor);
+    await Comedor.findByIdAndDelete(id);
     return res.json("comedor eliminado correctamente");
   } catch (err) {
-    console.error(err.message);
     return res.json(err.message);
   }
 };

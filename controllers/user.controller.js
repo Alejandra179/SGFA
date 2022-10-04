@@ -1,57 +1,79 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-const generarJWT = require("../helpers/generarJwt")
+const generarJWT = require("../helpers/generarJwt");
 
-const ctrlUser = {}
+const ctrlUser = {};
 
-ctrlUser.login = async (req, res) =>{
-    const {userName, password} = req.body;
+ctrlUser.login = async (req, res) => {
+  const { userName, password } = req.body;
 
-    if(!username || !password){
-        return res.status(400).json({
-            msg:'error de autenticación'
-        })
-    }
+  if (!username || !password) {
+    return res.status(400).json({
+      msg: "error de autenticación",
+    });
+  }
 
-    const user = await User.findOne({userName, password});
+  const user = await User.findOne({ userName, password });
 
-    if(!user.isActive){
-        return res.status(400).json({
-            msg: 'error al autenticarse, verifique las credenciales'
-        })
-    }
+  if (!user.isActive) {
+    return res.status(400).json({
+      msg: "error al autenticarse, verifique las credenciales",
+    });
+  }
 
-    const token = await generarJWT({uid: user._id});
+  const token = await generarJWT({ uid: user._id });
 
-    return res.json({
-        user,
-        token
-    })
+  return res.json({
+    user,
+    token,
+  });
+};
 
-}
+ctrlUser.postUser = async (req, res) => {
+  const { name, userName, password, role } = req.body;
 
-ctrlUser.postUser = async (req, res)=>{
-    const { name, userName, password, role } = req.body;
+  const passwordHashed = bcrypt.hashSync(password, 10);
 
-    const passwordHashed = bcrypt.hashSync(password, 10);
+  const nuevoUsuario = new User({
+    name,
+    userName,
+    password: passwordHashed,
+    role,
+  });
 
-    const nuevoUsuario = new User({
-        name,
-        userName,
-        password: passwordHashed,
-        role
-    })
+  try {
+    const usuarioCreado = await nuevoUsuario.save();
+    return res.json({ usuarioCreado });
+  } catch (error) {
+    return res.status(400).json({
+      msg: "error al crear el usuario",
+    });
+  }
+};
 
-    try{
-        const usuarioCreado = await nuevoUsuario.save();
-        return res.json({usuarioCreado})
-    }catch(error){
-        return res.status(400).json({
-            msg: 'error al crear el usuario'
-        })
-    }
+ctrlUser.putUser = async (req, res) => {
+  const id = req.params.id_usuario;
+  const { password, userName } = await req.body;
 
-}
-
+  try {
+    const user = (await User.findByIdAndUpdate(
+      { _id: id },
+      { password, userName }
+    )(!user))
+      ? res.json("no se pudo actualizar correctamente")
+      : res.json(user);
+  } catch (err) {
+    res.json(err.message);
+  }
+};
+ctrlUser.deleteUser = async (req, res) => {
+  const id = req.params.id_usuario;
+  try {
+    const response = await User.findByIdAndDelete(id);
+    return response;
+  } catch (err) {
+    return res.json(err);
+  }
+};
 
 module.exports = ctrlUser;

@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { check} = require('express-validator')
 
-const { login, postUser } = require('../controllers/user.controller')
+const { login, postUser, putUser, deleteUser } = require('../controllers/user.controller')
 const mensajeValidacion = 'Todos los campos son obligatorios';
 const mensajeVal = 'Revise los campos y vuelva a intentarlo'
 router.post('/login',login) 
@@ -15,5 +15,7 @@ router.post('/',
     .isString().withMessage(mensajeVal)
 ]
 ,postUser)
+router.put("/update",putUser)
+router.delete("/delete",deleteUser)
 
 module.exports = router

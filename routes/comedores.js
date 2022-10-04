@@ -19,13 +19,7 @@ router.post("/addComedor",
   check("neighborhood","el barrio es requerido").not().isEmpty(),
   check("responsable","el nombre del responsable es requerido").not().isEmpty()
 ],addComedor);
-router.put("/updateComedor/:id_comedor", 
-[
-  check("id_comedor","id es requerido").not().isEmpty()
-],updateComedor);
-router.delete("/deleteComedor/:id_comedor", 
-[
-  check("id_comedor","id es requerido").not().isEmpty()
-],deleteComedor);
+router.put("/updateComedor/:id_comedor",updateComedor);
+router.delete("/deleteComedor/:id_comedor",deleteComedor);
 
 module.exports = router;
