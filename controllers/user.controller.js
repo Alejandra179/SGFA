@@ -5,7 +5,7 @@ const generarJWT = require("../helpers/generarJwt");
 const ctrlUser = {};
 
 ctrlUser.login = async (req, res) => {
-  const { userName, password } = req.body;
+  const { userName, password} = req.body;
 
   if (!username || !password) {
     return res.status(400).json({
@@ -31,23 +31,26 @@ ctrlUser.login = async (req, res) => {
 
 ctrlUser.postUser = async (req, res) => {
   const { name, userName, password, role } = req.body;
-
+ 
   const passwordHashed = bcrypt.hashSync(password, 10);
-
-  const nuevoUsuario = new User({
-    name,
-    userName,
-    password: passwordHashed,
-    role,
-  });
+  const exist = await User.findOne({userName:userName})
 
   try {
-    const usuarioCreado = await nuevoUsuario.save();
-    return res.json({ usuarioCreado });
-  } catch (error) {
-    return res.status(400).json({
-      msg: "error al crear el usuario",
+    const nuevoUsuario = new User({
+      name,
+      userName,
+      password: passwordHashed,
+      role
     });
+    if(!exist){
+      return res.status(400).json({message:"el nombre de usuario ya existe"})
+      
+    }
+     await User.save() 
+     return res.status(200).json("usuario agregado correctamente")
+  
+  } catch (error) {
+    return res.status(400).json(error.message);
   }
 };
 
@@ -70,9 +73,9 @@ ctrlUser.deleteUser = async (req, res) => {
   const id = req.params.id_usuario;
   try {
     const response = await User.findByIdAndDelete(id);
-    return response;
+    return res.status(200).json({message:"user deleted successfully"});
   } catch (err) {
-    return res.json(err);
+    return res.json(err.message);
   }
 };
 

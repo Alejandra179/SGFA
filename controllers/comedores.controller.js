@@ -3,7 +3,7 @@ const Comedor = require("../models/Comedor");
 const { validationResult } = require("express-validator");
 comedoresCtrl.getComedores = async (req, res) => {
   try {
-    const comedores = await Comedor.find();
+    const comedores = await Comedor.find({isL});
     return res.json(comedores);
   } catch (error) {
     console.log(error.message);

@@ -1,5 +1,5 @@
 {
-   "mongoURI": "mongodb+srv://alemz:39320477ale@cluster0.slgs9tk.mongodb.net/?retryWrites=true&w=majority",
+   "mongoURI": "mongodb+srv://alemz:39320477ale@cluster0.slgs9tk.mongodb.net/SGFA?retryWrites=true&w=majority",
    "jwtSecret" :"frasesecreta",
    "githubClientId":"f3645cdba5c56852b20f",
    "gitHubSecret":"8ebbe1026d93efe4e0df316a78874a502f9033ac"

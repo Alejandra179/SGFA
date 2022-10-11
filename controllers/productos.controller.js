@@ -1,5 +1,6 @@
 const ProductoCtrl = {};
 const Producto = require("../models/Producto");
+
 ProductoCtrl.getProductos = async (req, res) => {
   try {
     const productos = await Producto.find();
@@ -14,7 +15,7 @@ ProductoCtrl.getProducto = async (req, res) => {
   try {
     const prod = await Producto.findOne({ _id: id });
     !prod
-      ? res.status(400).json({ msg: "error - producto no encontrado - " })
+      ? res.status(400).json({ message: "error - producto not found- " })
       : res.json(prod);
   } catch (error) {
     return res.json(error.message);
@@ -27,7 +28,7 @@ ProductoCtrl.addProducto = async (req, res) => {
     const newProducto = { descripcion, unidad_medida };
     const prod = new Producto(newProducto);
     await prod.save();
-    return res.json(prod);
+    return res.status(200).json({menssage:"product successfully added"});
   } catch (err) {
     return res.json(err.message);
   }
@@ -52,7 +53,7 @@ ProductoCtrl.deleteProducto = async (req, res) => {
   const id = req.params.id_producto;
   try {
     await Producto.findByIdAndDelete(id);
-    return res.json({ msg: "User Deleted" });
+    return res.json({ message: "Product Deleted" });
   } catch (error) {
     return res.json(error.message);
   }

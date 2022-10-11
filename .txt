@@ -1,18 +1,10 @@
-OBJETIVOS
------------------
-* Elaborar un dispositivo que capture datos de la humedad, temperatura, precipitación, dirección y velocidad del viento mediante la utilización de componentes asequibles.
-* Captura y almacenamiento de valores capturados por el dispositivo de hardware mediante la utilización de un servidor web.
-* Diseñar una API que permita realizar peticiones post, para agregar los valores recibidos por el dispositivo, y diferentes peticiones get, para consumir los registros históricos del clima, realizar consultas por rango de fechas y obtener los últimos valores obtenidos.
-* Realizar predicciones del clima.
-
-ALCANCE
------------------
-
-
+OBJETIVOS:
+*Desarrollar un sistema de Gestión de lista de mercaderias que reciben los comedores comunitarios
+que administra la Fundación Afectos en la ciudad de Formosa.
 
 REQUIMIENTOS:
 -Diseñar un sistema de gestion para la Fundacion Afectos
--Debe tener una pagina de logeo, con dos perfiles: Admin y normal
+-Debe tener una pagina de logeo, con dos perfiles: admin y normal
 -Debe tener una página para visualizar en forma de tabla los siguientes datos
 de los comedores: N°, Nombre, Dirección, Responsable, boton de editar y eliminar.
 -Debe poseer una pagina para visualizar y cargar los registros de mercaderias semanales.
@@ -27,14 +19,21 @@ dentro de los detalles de cada lista se mostraria una checklist de productos tot
 -Debe poseer dos modelos: Usuario y registro
 -Rutas:
 /login
+/postUser
+/putUser
+/deleteUser
 /getComedores
 /addComedor
-/updateComedor/:idComedor
-/deleteComedor/:idComedor
+/updateComedor/:id_comedor
+/deleteComedor/:id_comedor
 /addLista
-/getLista/:idComedor
+/getLista/:id_lista
 /addLista,
 /getListas
-/updateLista/:idLista
+/updateLista/:id_lista
+/getProductos,
+/getProducto/:id_producto,
+/addProducto,
+/eliminar/:id_producto,
 
 

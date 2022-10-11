@@ -23,10 +23,11 @@ const UserSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    isActive: Boolean
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = model("user", UserSchema);
+module.exports = model("User", UserSchema);
