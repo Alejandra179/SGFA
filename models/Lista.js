@@ -3,22 +3,22 @@ const { model, Schema } = require("mongoose");
 const ListaSchema = new Schema(
   {
     comedor: String,
-    semana: [
+    dia: String,
+    mercaderias: [
       {
-        dia: String,
-        mercaderias: [
-          {
-            cantidad: Number,
-            descripcion: String,
-            unidad_medida: String,
-          },
-        ],
-      }
+        cantidad: Number,
+        descripcion: String,
+        unidad_medida: String,
+      },
     ],
     estado: {
       type: String,
-      enum:["cargado","pendiente","entregado"]
+      enum: ["cargado", "pendiente", "entregado"],
     },
+    fecha:{
+      type: Date,
+      default:new Date()
+    }
   },
   {
     timestamps: true,

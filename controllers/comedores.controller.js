@@ -1,9 +1,9 @@
 const comedoresCtrl = {};
 const Comedor = require("../models/Comedor");
-const { validationResult } = require("express-validator");
+
 comedoresCtrl.getComedores = async (req, res) => {
   try {
-    const comedores = await Comedor.find({isL});
+    const comedores = await Comedor.find({});
     return res.json(comedores);
   } catch (error) {
     console.log(error.message);
@@ -14,8 +14,8 @@ comedoresCtrl.getComedores = async (req, res) => {
 comedoresCtrl.getComedor = async (req, res) => {
   const id = req.params.id_comedor;
   try {
-    const comedor = (await Comedor.findOne({ _id: id })(!comedor))
-      ? res.status(400).json({ msg: "error - comedor no encontrado - " })
+    const comedor = (await Comedor.findOne({ _id: id })
+    (!comedor))? res.status(400).json({ msg: "error - comedor no encontrado - " })
       : res.json(comedor);
   } catch (error) {
     console.log(error.message);
@@ -24,12 +24,7 @@ comedoresCtrl.getComedor = async (req, res) => {
 };
 
 comedoresCtrl.addComedor = async (req, res) => {
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
+  
   const { name, street, neighborhood, number, responsable } = req.body;
 
   try {
@@ -43,7 +38,6 @@ comedoresCtrl.addComedor = async (req, res) => {
 };
 
 comedoresCtrl.updateComedor = async (req, res) => {
-  const errors = validationResult(req);
   const id = req.params.id_comedor;
   const { name, street, neighborhood, number, responsable } = req.body;
   const come = {

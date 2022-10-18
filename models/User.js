@@ -17,7 +17,8 @@ const UserSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ["admin","comun"]
+      enum: ["admin","comun"],
+      default:"comun"
     },
     date: {
       type: Date,

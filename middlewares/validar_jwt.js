@@ -1,9 +1,10 @@
 const { response, request } = require("express");
-const Users = require('../models/Users');
+const config = require('config')
+const Users = require('../models/User');
 const jwt = require('jsonwebtoken');
 const secret = config.get('jwtSecret')
 // Función para validar los tokens recibidos en las rutas protegidas
-const validar_jwt = async (req = request, res = response, next) => {
+module.exports = function (req = request, res = response, next) {
     // Se almacena el token recibido del cliente
     const token = req.header('authorization');
     
@@ -21,7 +22,7 @@ const validar_jwt = async (req = request, res = response, next) => {
         
 
         // Buscar el usuario con la base de datos y luego se verifica si existe
-        const user = await Users.findById(uid);
+        const user = Users.findById(uid);
 
         if(!user){
             return res.status(401).json({
@@ -49,10 +50,7 @@ const validar_jwt = async (req = request, res = response, next) => {
         })
     }
     
-
+    next();
 }
 
 
-module.exports = {
-    validar_jwt
-};
