@@ -26,9 +26,9 @@ ListaCtrl.addLista = async (req, res) => {
 
   try {
   
-    const { comedor, semana } = await req.body;
+    const { comedor, dia, mercaderias } = await req.body;
 
-    const newLista = { comedor, semana };
+    const newLista = { comedor, dia, mercaderias };
     const lista = new Lista(newLista);
     await lista.save();
     return res.status(200).json({message:"list successfully added"});
@@ -50,12 +50,12 @@ ListaCtrl.updateLista = async (req, res) => {
 
   
   try {
-    const { comedor, semana } = req.body;
+    const {dia, mercaderias } = req.body;
     const list = {
-      comedor,
-      semana,
+      dia,
+      mercaderias
     };
-    const lista = await Lista.findByIdAndUpdate(id, list);
+    await Lista.findByIdAndUpdate(id, list);
     return res.status(200).json({message:"list updated"});
   } catch (err) {
     return res.status(400).json(err.message);

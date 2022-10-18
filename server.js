@@ -13,12 +13,11 @@ const usersRoutes = require("./routes/users");
 const listasRoutes = require("./routes/listas");
 const comedoresRoutes = require("./routes/comedores");
 const productosRoutes = require("./routes/productos");
-//const authRoutes = require("./routes/auth");
+const authRoutes = require("./routes/auth");
 
-//const auth = require('./middleware/auth')
 
 //iniciamos el mware
-//app.use(express.json({ extended: false }));
+app.use(express.json({ extended: false }));
 
 //conectamos a db
 connectDB();
@@ -27,11 +26,11 @@ connectDB();
 
 //routes
 
-//app.use("/users", usersRoutes);
-//app.use("/comedores", comedoresRoutes);
-//app.use("/listas", listasRoutes);
-//app.use("/productos", productosRoutes);
-//app.use("/auth", authRoutes);
+app.use("/users", usersRoutes);
+app.use("/comedores", comedoresRoutes);
+app.use("/listas", listasRoutes);
+app.use("/productos", productosRoutes);
+app.use("/auth", authRoutes);
 
 app.listen(PORT, () => {
   console.log(`servidor iniciado en el puerto: ${PORT}`);

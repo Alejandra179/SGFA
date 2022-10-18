@@ -14,11 +14,29 @@ const validar_jwt = require("../middlewares/validar_jwt");
 
 router.get("/getListas", validar_jwt, getListas);
 router.get("/getLista/:id_lista", validar_jwt, getLista);
-router.post(  "/addLista",  [
+router.post(
+  "/addLista",
+  [
     validar_jwt,
     esAdmin,
-    check("comedor","el registro de la lista debe estar vinculado con un comedor").not().isEmpty().isString(),
-    check("semana", "este campo no puede ser vacio").not().isEmpty(),
+    check(
+      "comedor",
+      "el registro de la lista debe estar vinculado con un comedor"
+    )
+      .not()
+      .isEmpty()
+      .isString()
+      .withMessage("formato de dia invalido"),
+    check("dia", "este campo no puede ser vacio")
+      .not()
+      .isEmpty()
+      .isString()
+      .withMessage("formato de dia invalido"),
+    check("mercaderias", "este campo no puede ser vacio")
+      .not()
+      .isEmpty()
+      .isArray()
+      .withMessage("se espera un arreglo"),
     validationFields,
   ],
   addLista

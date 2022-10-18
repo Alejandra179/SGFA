@@ -1,5 +1,6 @@
 const express = require("express");
 const { login, register } = require("../controllers/auth.controller");
+const {check}= require("express-validator")
 const router = express.Router();
 router.post("/login", login);
 router.post(
@@ -17,7 +18,7 @@ router.post(
       .isString()
       .withMessage("password invalid"),
   ],
-  validationFieldsregister
+  register
 );
 
 module.exports = router;
