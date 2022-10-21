@@ -1,5 +1,18 @@
 import React from 'react'
+import { useState } from 'react'
+import { getComedores } from '../services/comedores';
 export default function Table() {
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+          const res = await getComedores()
+          setData(res);
+        }
+        fetchData();
+      
+      }, []);
+      console.log(data)
   return (
     <div>
         <div className='container'>
