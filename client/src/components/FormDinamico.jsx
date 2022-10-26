@@ -5,7 +5,7 @@ export default function FormDinamico() {
   return (
     <div className='container'>
         <div className='d-flex justify-content-center'>
-                <form>     
+                <form >     
                     <div className='row'>
                         <div className='col-4'>
                             <label className="form-label">Nombre</label>
