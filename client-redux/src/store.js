@@ -1,5 +1,5 @@
 
-import { configureStore as createStore, applyMiddleware } from 'redux' 
+import { configureStore as createStore, applyMiddleware } from 'react-redux' 
 
 import { composeWithDevTools } from 'redux-devtools-extension'
 
