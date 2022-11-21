@@ -1,21 +1,31 @@
 {
-  "name": "sgfa",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "backed-sgfa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "server": "nodemon server",
+    "client": "npm run dev --prefix client-redux-toolkit",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.1",
-    "vite": "^3.0.7"
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.2.2",
+    "concurrently": "^7.6.0",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.4",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.19"
   }
 }
