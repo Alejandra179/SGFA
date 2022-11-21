@@ -24,7 +24,10 @@ const UserSchema = new Schema(
       type: Date,
       default: Date.now,
     },
-    isActive: Boolean
+    isActive: {
+      type:Boolean,
+      default:true
+    }
   },
   {
     timestamps: true,

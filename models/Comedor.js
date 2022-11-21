@@ -24,4 +24,4 @@ const ComedorSchema = new Schema({
     timestamps:true
 })
 
-module.exports = model('comedor', ComedorSchema)
+module.exports = model('comedores', ComedorSchema)

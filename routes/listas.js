@@ -12,7 +12,7 @@ const validationFields = require("../helpers/validationFields");
 const esAdmin = require("../middlewares/es-admin");
 const validar_jwt = require("../middlewares/validar_jwt");
 
-router.get("/getListas", validar_jwt, getListas);
+//router.get("/getListas", validar_jwt, getListas);
 router.get("/getLista/:id_lista", validar_jwt, getLista);
 router.post(
   "/addLista",

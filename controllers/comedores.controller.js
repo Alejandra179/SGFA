@@ -3,10 +3,9 @@ const Comedor = require("../models/Comedor");
 
 comedoresCtrl.getComedores = async (req, res) => {
   try {
-    const comedores = await Comedor.find({});
+    const comedores = await Comedor.find();
     return res.json(comedores);
   } catch (error) {
-    console.log(error.message);
     return res.json(error.message);
   }
 };

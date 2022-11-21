@@ -22,4 +22,4 @@ backend-SGFA/node_modules
 *.njsproj
 *.sln
 *.sw?
-client/node_modules
+client-redux-toolkit/node_modules
