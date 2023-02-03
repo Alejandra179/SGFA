@@ -19,21 +19,10 @@ router.post(
   [
     validar_jwt,
     esAdmin,
-    check("name", "nombre es requerido")
-      .not()
-      .isEmpty()
-      .isString()
-      .withMessage("nombre invalido"),
+    check("name", "nombre es requerido").not().isEmpty().isString().withMessage("nombre invalido"),
     check("street", "la calle es requerida").not().isEmpty(),
-    check("neighborhood", "el barrio es requerido")
-      .not()
-      .isEmpty()
-      .withMessage("debe ser string"),
-    check("responsable", "el nombre del responsable es requerido")
-      .not()
-      .isEmpty()
-      .isString()
-      .withMessage("debe ser un string"),
+    check("neighborhood", "el barrio es requerido").not().isEmpty().withMessage("este campo no puede ser vacio"),
+    check("responsable", "el nombre del responsable es requerido").not().isEmpty().isString().withMessage("este campo no puede ser vacio"),
     validationFields,
   ],
   addComedor

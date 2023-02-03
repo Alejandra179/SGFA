@@ -37,22 +37,22 @@ authCtrl.login = async (req, res, next) => {
 
 authCtrl.register = async (req, res) => {
   try {
-    const { name, userName, password, role } = req.body;
-    console.log(name, userName, password, role);
+    const { name, username, password, role } = req.body;
+    console.log(name, username, password, role);
     const passwordHashed = bcrypt.hashSync(password, 10);
-    const exist = await User.findOne({ userName: userName });
-
-    const nuevoUsuario = new User({
-      name,
-      userName,
-      password: passwordHashed,
-      role,
-    });
+    const exist = await User.findOne({ username });
     if (exist) {
       return res
         .status(400)
         .json({ message: "el nombre de usuario ya existe" });
     }
+    const nuevoUsuario = new User({
+      name,
+      username,
+      password: passwordHashed,
+      role,
+    });
+    
     await nuevoUsuario.save();
     return res.status(200).json("usuario agregado correctamente");
   } catch (error) {
