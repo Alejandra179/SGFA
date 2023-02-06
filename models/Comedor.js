@@ -6,9 +6,12 @@ const ComedorSchema = new Schema({
         required: true
     },
     address: {
-        street: String,
+        street:{
+            type:String,
+            required:true,   
+        },
         number: Number,
-        required:true,
+        
         neighborhood: String
 
     },
