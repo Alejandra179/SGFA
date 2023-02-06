@@ -37,8 +37,9 @@ authCtrl.login = async (req, res, next) => {
 
 authCtrl.register = async (req, res) => {
   try {
-    const { name, username, password, role } = req.body;
-    console.log(name, username, password, role);
+    const { name, username, password, role, images } = req.body;
+    console.log(name, username, password, role,images);
+    return
     const passwordHashed = bcrypt.hashSync(password, 10);
     const exist = await User.findOne({ username });
     if (exist) {
