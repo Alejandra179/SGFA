@@ -1,7 +1,8 @@
 const url ="http://localhost:4000/auth"
 
-export default function signIn({ username, password }) {
-    return fetch(`${url}/login`, {
+
+export const signIn = async ({ username, password })=> {
+    return await fetch(`${url}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,4 +22,17 @@ export default function signIn({ username, password }) {
         }
       });
   }
+  
+
+export const signUp = ({ name, username, password,role })=>{
+  fetch(`${url}/register`, {
+  method: "POST",
+  body: JSON.stringify({name,username,password,role}),
+  headers: {"Content-type": "application/json; charset=UTF-8"}
+})
+.then(response => response.json()) 
+.then(json => json)
+.catch(err => err);
+  
+}
   

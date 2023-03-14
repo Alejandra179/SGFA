@@ -1,10 +1,12 @@
-const url ="http://localhost:5000/comedores/"
+const url ="http://localhost:4000/comedores/";
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2M2ZiNmM1ZWQwOTY3YjE5YzUzNWJlMGIiLCJpYXQiOjE2Nzg2MjUxNTcsImV4cCI6MTY3ODYyODc1N30.ZFcavRpQH-IxunI98-AP4XyNve93LZ2GkYY_O1V2XSs";
 export const getComedores = async()=>{
  const res = await fetch(`${url}getComedores`,
  {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "authorization":token
     },
   }).then((response) => response.json())
   .catch((error) => {
