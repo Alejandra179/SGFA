@@ -9,10 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
     "@tanstack/react-query": "^4.24.4",
     "@tanstack/react-query-devtools": "^4.24.4",
     "axios": "^1.3.2",
     "bootstrap": "^5.2.3",
+<<<<<<< HEAD
+=======
+    "bootstrap-icons": "^1.10.3",
+>>>>>>> a30e0c9a1bacdcad4931710f321d82bb707f4391
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
@@ -23,6 +28,7 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "sass": "^1.58.0",
     "vite": "^4.1.0"
   }
 }

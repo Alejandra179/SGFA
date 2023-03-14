@@ -1,8 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+<<<<<<< HEAD
 
 import 'bootstrap/dist/css/bootstrap.css';
 import {QueryClient, QueryClientProvider} from 'react-query';
+=======
+import App from './App';
+//import '../scss/styles.scss';
+// Import all of Bootstrap's JS
+import * as bootstrap from 'bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+>>>>>>> a30e0c9a1bacdcad4931710f321d82bb707f4391
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   createBrowserRouter,

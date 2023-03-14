@@ -6,6 +6,7 @@ const ComedorSchema = new Schema({
         required: true
     },
     address: {
+<<<<<<< HEAD
         street: {
             type: String,
             required: true
@@ -15,6 +16,15 @@ const ComedorSchema = new Schema({
             type: String,
             required: true
         }
+=======
+        street:{
+            type:String,
+            required:true,   
+        },
+        number: Number,
+        
+        neighborhood: String
+>>>>>>> a30e0c9a1bacdcad4931710f321d82bb707f4391
 
     },
     responsable: {
